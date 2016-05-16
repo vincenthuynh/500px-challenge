@@ -43,7 +43,7 @@ class redis (
   ->
   file_line { 'set pidfile':
     path  => "/etc/redis/${port}.conf",
-    line  => "pidfile /var/run/redis_${port}.pid,
+    line  => "pidfile /var/run/redis_${port}.pid",
     match => '^pidfile',
   }
   ->
@@ -61,8 +61,9 @@ class redis (
   ->
   exec { 'set redis runlevel to default':
     command => '/usr/sbin/update-rc.d redis defaults',
+	notify  => Service['redis']
   }
-  ->
+
   service { 'redis':
     ensure => running,
     enable => true,
