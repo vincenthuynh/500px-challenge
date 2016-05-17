@@ -3,6 +3,8 @@
 ## Testing:
 The project contains a Vagrantfile which can be used to test the module.
 - At this time, provisioning needs to be done manually (refer to Runbook).
+- Clone the project locally then do a `vagrant up` in the workspace.
+- After applying runbook, test with URL: `http://172.31.32.1`
 
 ## Runbook:
 I did not want to make assumptions on how my code would be deployed therefore I have provided a runbook to setup the server.
