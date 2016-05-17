@@ -5,7 +5,7 @@ class profile::redis (
   exec { 'install redis':
     command => '/bin/bash scripts/redis.sh',
     cwd     => '/home/ubuntu/500px-challenge',
-    onlyif  => 'test ! -d /etc/redis',
+    onlyif  => '/usr/bin/test ! -d /etc/redis',
   }
   ->
   file { '/etc/redis':

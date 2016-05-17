@@ -4,7 +4,7 @@ class profile::upstart (
   exec { 'install upstart':
     command => '/bin/bash scripts/upstart.sh',
     cwd     => '/home/ubuntu/500px-challenge',
-    onlyif  => 'test ! -d /usr/lib/upstart',
+    onlyif  => '/usr/bin/test ! -d /usr/lib/upstart',
   }
   ->
   file { '/etc/init/redis.conf':
