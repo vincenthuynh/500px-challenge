@@ -7,7 +7,7 @@ The project contains a Vagrantfile which can be used to test the module.
 - After applying runbook, test with URL: `http://172.31.32.1`
 
 ## Runbook:
-I did not want to make assumptions on how my code would be deployed therefore I have provided a runbook to setup the server.
+I was not totally clear on how the code would be deployed and I did not want to make assumptions therefore I have provided a runbook to setup the server.
 
 - As 'ubuntu' user
 - sudo apt-get install -y git
