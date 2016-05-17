@@ -18,7 +18,6 @@ I did not want to make assumptions on how my code would be deployed therefore I 
 
 ## Decisions:
 - Used a roshi-server binary instead of building at run time due to issues with building the binary. This approach is more ideal to lock the version and save on provisioning time.
--
 
 
 ## Improvements:
