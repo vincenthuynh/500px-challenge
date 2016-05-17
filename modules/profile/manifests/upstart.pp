@@ -12,7 +12,7 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
-	notify  => Service['redis']
+    notify  => Service['redis']
   }
   ->
   file { '/etc/init/roshi.conf':
@@ -20,7 +20,7 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
-	notify  => Service['roshi']
+    notify  => Service['roshi']
   }
   ->
   file { '/etc/init/nginx.conf':
@@ -28,7 +28,7 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
-	notify  => Service['nginx']
+    #notify  => Service['nginx']
   }
   
   service { 'redis':
