@@ -4,7 +4,7 @@ class profile::upstart (
   exec { 'install upstart':
     command => '/bin/bash scripts/upstart.sh',
     cwd     => '/home/ubuntu/500px-challenge',
-    onlyif  => '/bin/ls /usr/lib/ | /bin/grep -c upstart',
+    onlyif  => 'test ! -d /usr/lib/upstart',
   }
   ->
   file { '/etc/init/redis.conf':
@@ -12,6 +12,7 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
+	notify  => Service['redis']
   }
   ->
   file { '/etc/init/roshi.conf':
@@ -19,6 +20,7 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
+	notify  => Service['roshi']
   }
   ->
   file { '/etc/init/nginx.conf':
@@ -26,5 +28,21 @@ class profile::upstart (
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
+	notify  => Service['nginx']
   }
+  
+  service { 'redis':
+    ensure => running,
+    enable => true,
+  }
+  
+  service { 'roshi':
+    ensure => running,
+    enable => true,
+  }
+  
+  #service { 'nginx':
+  #  ensure => running,
+  #  enable => true,
+  #}
 }

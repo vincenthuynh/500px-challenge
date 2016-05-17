@@ -5,7 +5,7 @@ class profile::redis (
   exec { 'install redis':
     command => '/bin/bash scripts/redis.sh',
     cwd     => '/home/ubuntu/500px-challenge',
-    onlyif  => '/bin/ls /etc | /bin/grep -c redis',
+    onlyif  => 'test ! -d /etc/redis',
   }
   ->
   file { '/etc/redis':
@@ -63,10 +63,5 @@ class profile::redis (
   exec { 'set redis runlevel to disable':
     command => '/usr/sbin/update-rc.d redis disable',
 	#notify  => Service['redis']
-  }
-
-  service { 'redis':
-    ensure => running,
-    enable => true,
   }
 }
