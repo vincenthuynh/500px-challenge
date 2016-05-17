@@ -4,7 +4,8 @@ class redis (
 {
   exec { 'install redis':
     command => '/bin/bash scripts/redis.sh',
-    cwd     => '$HOME/500px-challenge'
+    cwd     => '/home/ubuntu/500px-challenge',
+    onlyif  => '/bin/ls /etc | /bin/grep -c redis',
   }
   ->
   file { '/etc/redis':
@@ -17,7 +18,7 @@ class redis (
   ->
   file { '/etc/init.d/redis':
     ensure => file,
-    source => '$HOME/500px-challenge/redis-stable/utils/redis_init_script',
+    source => '/home/ubuntu/500px-challenge/redis-stable/utils/redis_init_script',
     owner    => 'root',
     group    => 'root',
     mode     => '0755',
@@ -25,7 +26,7 @@ class redis (
   ->
   file { "/etc/redis/${port}.conf":
     ensure => file,
-    source => '$HOME/500px-challenge/redis-stable/redis.conf',
+    source => '/home/ubuntu/500px-challenge/redis-stable/redis.conf',
     owner    => 'root',
     group    => 'root',
     mode     => '0644',
@@ -59,9 +60,9 @@ class redis (
     match => '^dir',
   }
   ->
-  exec { 'set redis runlevel to default':
-    command => '/usr/sbin/update-rc.d redis defaults',
-	notify  => Service['redis']
+  exec { 'set redis runlevel to disable':
+    command => '/usr/sbin/update-rc.d redis disable',
+	#notify  => Service['redis']
   }
 
   service { 'redis':

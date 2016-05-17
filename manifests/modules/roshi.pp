@@ -1,12 +1,10 @@
-vcsrepo { "$HOME/500px-challenge":
-  ensure   => present,
-  provider => git,
-  source   => 'https://github.com/soundcloud/roshi',
+
+file { '/home/ubuntu/500px-challenge/manifests/modules/roshi-server':
+    ensure   => file,
+    mode     => '0755',
 }
-#go get
 ->
-exec { 'make roshi':
-    command => '/usr/bin/make',
-    cwd     => "$HOME/500px-challenge/roshi/roshi-server",
-	environment => "GOPATH=$HOME/500px-challenge/roshi/roshi-server"
+exec { 'start roshi':
+    command => '/home/ubuntu/500px-challenge/manifests/modules/roshi-server -redis.instances=localhost:6379 &',
+    cwd     => "/home/ubuntu/500px-challenge/manifests/modules",
 }
