@@ -6,8 +6,9 @@ apt-get install -y build-essential
 apt-get install -y tcl8.5
 
 ## Install golang | https://github.com/golang/go/wiki/Ubuntu
-yes | add-apt-repository ppa:ubuntu-lxc/lxd-stable
-apt-get install -y golang
+## Needed to build roshi-server
+#yes | add-apt-repository ppa:ubuntu-lxc/lxd-stable
+#apt-get install -y golang
 
 ## Install Puppet
 apt-get install -y puppet
