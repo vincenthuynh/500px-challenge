@@ -14,5 +14,4 @@ apt-get install -y tcl8.5
 apt-get install -y puppet
 puppet module install puppetlabs-firewall
 puppet module install puppetlabs-stdlib
-puppet module install puppetlabs-vcsrepo
 puppet module install jfryman-nginx
